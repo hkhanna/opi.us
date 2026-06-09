@@ -1,0 +1,259 @@
+:root {
+  --bg: #F7F4EE;
+  --ink: #1C1B19;
+  --muted: #56524B;
+  --hairline: rgba(28, 27, 25, 0.14);
+  --accent: #2E3A4B;
+
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  padding: clamp(2rem, 5vw, 4.5rem) clamp(1.5rem, 6vw, 6rem) clamp(2rem, 5vw, 4.5rem);
+}
+
+/* ---- Header / wordmark ---- */
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.masthead-link {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(0.7rem, 1.2vw, 1rem);
+  text-decoration: none;
+  color: var(--ink);
+}
+
+/* Top-right link, in line with the wordmark */
+.nav-link {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 1px;
+}
+
+.nav-link.is-current {
+  color: var(--muted);
+  cursor: default;
+}
+
+.masthead-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+.mark {
+  flex: none;
+  display: block;
+  width: 30px;
+  height: 30px;
+  color: var(--ink);
+}
+
+.lockup {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.wordmark {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  letter-spacing: 0.005em;
+  color: var(--ink);
+}
+
+.institute {
+  margin-top: 0.42em;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(0.6rem, 1vw, 0.7rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---- Landing statement ---- */
+main {
+  margin-top: clamp(5rem, 26vh, 15rem);
+  margin-bottom: clamp(4rem, 16vh, 10rem);
+}
+
+.headline {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5.2vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: -0.012em;
+  max-width: 27ch;
+  text-wrap: balance;
+
+  animation: rise 1.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.subhead {
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.05rem, 1.55vw, 1.32rem);
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 55ch;
+  text-wrap: pretty;
+}
+
+@keyframes rise {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headline,
+  .mission { animation: none; }
+}
+
+/* ---- Mission ---- */
+main.mission {
+  margin-top: clamp(3rem, 11vh, 6.5rem);
+  animation: rise 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+.eyebrow {
+  margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(0.66rem, 0.95vw, 0.74rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.prose {
+  max-width: 88ch;
+}
+
+.prose p {
+  margin: 0 0 1em;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  line-height: 1.55;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.prose p:last-child { margin-bottom: 0; }
+
+/* Confident opening line */
+.prose .lead {
+  max-width: 32ch;
+  margin-bottom: 0.9em;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+/* ---- Footer / colophon ---- */
+.colophon {
+  margin-top: auto;
+  padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  border-top: 1px solid var(--hairline);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(0.72rem, 0.95vw, 0.8rem);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem clamp(2rem, 6vw, 5rem);
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.colophon .contact {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+}
+
+.colophon a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--hairline);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.colophon a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.colophon a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+.colophon .legal {
+  margin: 0;
+  max-width: 38ch;
+  text-align: left;
+}
+
+.colophon .legal small {
+  display: block;
+  font-size: inherit;
+}
+
+@media (max-width: 34rem) {
+  .colophon { justify-content: flex-start; }
+}
